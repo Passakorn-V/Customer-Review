@@ -12,15 +12,8 @@ Query เพื่อวิเคราะห์ข้อมูลได้ง�
 
 2. Architecture Overview
 
-[ Shopee Extractor ]        [ Lazada Extractor ]
-          |                         |
-          +-----------+-------------+
-                      |
-              [ Normalize Layer ]
-                      |
-                [ Load to DB ]
-                      |
-              [ Central Database ]
+<img width="483" height="243" alt="image" src="https://github.com/user-attachments/assets/84d103fd-ae3d-4524-b74b-22cabd9f8dfe" />
+
 
 
 ETL Flow
@@ -32,27 +25,8 @@ Load: โหลดข้อมูลเข้าสู่ Database กลาง 
 
 3. Project Structure
 
-Customer Review/
-├── main.py
-├── shopee/
-│   ├── __init__.py
-│   └── extractor.py
-├── lazada/
-│   ├── __init__.py
-│   └── extractor.py
-├── transformer/
-│   ├── __init__.py
-│   └── normalize_review.py
-├── loader/
-│   ├── __init__.py
-│   └── load_to_db.py
-├── mock_data/
-│   ├── shopee_reviews.py
-│   └── lazada_reviews.py
-├── schema/
-│   ├── er_diagram.md
-│   └── ddl.sql
-└── README.md
+<img width="292" height="503" alt="image" src="https://github.com/user-attachments/assets/c347d2d9-ae6c-4cde-8346-e46bdb850778" />
+
 
 
 4. Data Handling Rules
@@ -79,26 +53,16 @@ review_date ต้องมีอย่างน้อยระดับวั�
 
 5. Unified Review Schema
 
-Field	                Description
+<img width="541" height="285" alt="image" src="https://github.com/user-attachments/assets/06df460e-b554-47c4-a3e1-b6ea39450b93" />
 
-platform	            ชื่อแพลตฟอร์ม (Shopee / Lazada)
-platform_review_id	    Review ID จากแพลตฟอร์ม
-platform_product_id	    Product ID จากแพลตฟอร์ม
-rating_score	        คะแนนตัวเลข (Shopee)
-rating_text	            คะแนนข้อความ (Lazada)
-review_text	            ข้อความรีวิว
-reviewer_name	        ชื่อผู้รีวิว
-review_date	            วันที่รีวิว
-product_option	        ตัวเลือกสินค้า
 
 
 6. Database Design
 
 รายละเอียด ER Diagram และ SQL DDL อยู่ในโฟลเดอร์:
 
-schema/
-├── er_diagram.md
-└── ddl.sql
+<img width="227" height="96" alt="image" src="https://github.com/user-attachments/assets/90d1b6ea-a99c-4636-b249-fe5b435c58b2" />
+
 
 โครงสร้างถูกออกแบบแบบ Star Schema (Dimension + Fact) เพื่อรองรับ BI และ Analytics
 
@@ -177,3 +141,7 @@ Data Engineer จึงมีหน้าที่หลักในการ:
 หากมีการเข้าถึง Official API หรือ Token ที่ได้รับอนุญาตจากแพลตฟอร์ม
 สามารถนำ Extract Layer ไปเชื่อมต่อ API จริงได้ทันที
 โดยไม่ต้องแก้ไขโครงสร้าง Transform และ Load ที่ออกแบบไว้
+
+### ตัวอย่างผลลัพธ์ 
+<img width="1488" height="324" alt="image" src="https://github.com/user-attachments/assets/f542dc96-e0d3-4510-b964-1dad06573ef3" />
+
